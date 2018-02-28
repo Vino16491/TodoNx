@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 
 @Component({
@@ -7,12 +7,21 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-item.html',
 })
 export class AddItemPage {
+  title: string;
+  description: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
+  }
+  saveItem() {
+    let newItem = {
+      title: this.title,
+      description: this.description
+    };
+    this.view.dismiss(newItem)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemPage');
+  close() {
+    this.view.dismiss()
   }
 
 }
