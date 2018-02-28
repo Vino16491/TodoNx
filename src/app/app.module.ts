@@ -12,7 +12,9 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail'
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AddItemPage,
+    ItemDetailPage
   ],
   imports: [
     BrowserModule,

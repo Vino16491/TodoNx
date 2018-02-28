@@ -8,7 +8,7 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 })
 export class HomePage {
 
-  items;
+  items = [];
   constructor(public navCtrl: NavController, public modalCtrl: ModalController) { }
 
   addItem() {
