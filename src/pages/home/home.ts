@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, ModalController } from 'ionic-angular';
+import { AddItemPage } from '../add-item/add-item'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -8,22 +8,23 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   items;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) { }
 
-  }
-  ionViewDidLoad() {
-    this.items = [
-      { title: 'hi', description: 'here You are' },
-      { title: 'hello', description: 'Hey' },
-      { title: 'hey', description: 'jyane' }
-    ]
-  }
-
-  addItem(){
-    alert('Add Item works')
+  addItem() {
+    let addModal = this.modalCtrl.create(AddItemPage);
+    addModal.onDidDismiss((item) => {
+      if (item) {
+        this.saveItem(item);
+      }
+    });
+    addModal.present();
   }
 
-  viewItem(item){
-    alert('This is your item' + JSON.stringify(item) )
+  saveItem(item) {
+    this.items.push(item);
+  }
+
+  viewItem(item) {
+    alert('This is your item' + JSON.stringify(item))
   }
 }
